@@ -29,8 +29,8 @@ export default defineConfig({
       },
 
       {
-        find: '@utils',
-        replacement: path.resolve(__dirname, './packages/utils'),
+        find: '@core',
+        replacement: path.resolve(__dirname, './packages/core'),
       },
     ],
   },

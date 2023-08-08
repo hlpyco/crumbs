@@ -7,7 +7,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 
-import { classBuilder } from '@/utils';
+import { classBuilder } from '@/core/builders';
 
 import {
   GRID_CLASS,

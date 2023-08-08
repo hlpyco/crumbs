@@ -1,1 +1,1 @@
-export const CLASS_BUILDER_JOIN_CHARACTER = ' ';
+export const JOIN_CHARACTER = ' ';

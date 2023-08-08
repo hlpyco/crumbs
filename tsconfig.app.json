@@ -7,7 +7,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./packages/*"],
-      "@utils/*": ["./packages/utils/*"],
+      "@core/*": ["./packages/core/*"],
       "@constants/*": ["./packages/constants/*"],
       "@components/*": ["./packages/components/*"],
     }

@@ -1,5 +1,5 @@
 <template>
-  <button :class="classes()">
+  <button v-bind="$props" :class="composite.class" :style="composite.style">
     {{ label }}
   </button>
 </template>
@@ -7,12 +7,18 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 
-import { classBuilder } from '@/utils';
+import { compositor } from '@/core';
 
 import { DEFAULT_COLOR, DEFAULT_LABEL } from '@components/VeeButton/constants';
 
 export default defineComponent({
   name: 'VeeButton',
+
+  data() {
+    return {
+      composite: compositor(),
+    };
+  },
 
   props: {
     color: {
@@ -23,12 +29,6 @@ export default defineComponent({
     label: {
       type: String,
       default: DEFAULT_LABEL,
-    },
-  },
-
-  methods: {
-    classes() {
-      return classBuilder();
     },
   },
 });
