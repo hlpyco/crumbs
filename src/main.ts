@@ -1,8 +1,9 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
 
-import './assets/main.css'
+import VeeApp from './VeeApp.vue';
+
+import './styles.css';
 
 new Vue({
-  render: (h) => h(App)
-}).$mount('#app')
+  render: (h) => h(VeeApp),
+}).$mount('#app');
