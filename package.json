@@ -1,6 +1,6 @@
 {
-  "name": "crumbs",
-  "version": "0.0.0",
+  "name": "crumbs-vue",
+  "version": "0.1.0",
   "scripts": {
     "app:dev": "vite",
     "app:build": "vite build",
