@@ -1,6 +1,6 @@
 <template>
   <button :class="classes()">
-    <slot></slot>
+    {{ label }}
   </button>
 </template>
 
@@ -9,7 +9,7 @@ import { defineComponent } from 'vue';
 
 import { classBuilder } from '@/utils';
 
-import { DEFAULT_BUTTON_COLOR } from '@components/VeeButton/constants';
+import { DEFAULT_COLOR, DEFAULT_LABEL } from '@components/VeeButton/constants';
 
 export default defineComponent({
   name: 'VeeButton',
@@ -17,7 +17,12 @@ export default defineComponent({
   props: {
     color: {
       type: String,
-      default: DEFAULT_BUTTON_COLOR,
+      default: DEFAULT_COLOR,
+    },
+
+    label: {
+      type: String,
+      default: DEFAULT_LABEL,
     },
   },
 
