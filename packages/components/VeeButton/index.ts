@@ -1,2 +1,2 @@
-import VeeButton from './VeeButton.vue';
+import VeeButton from '@components/VeeButton/VeeButton.vue';
 export default VeeButton;

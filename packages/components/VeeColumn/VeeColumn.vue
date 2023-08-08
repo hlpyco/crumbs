@@ -9,7 +9,10 @@ import { defineComponent } from 'vue';
 
 import { classBuilder } from '@/utils';
 
-import { DEFAULT_COLUMN_SPAN, COLUMN_SPAN_CLASS_PREFIX } from './constants';
+import {
+  DEFAULT_COLUMN_SPAN,
+  COLUMN_SPAN_CLASS_PREFIX,
+} from '@components/VeeColumn/constants';
 
 export default defineComponent({
   name: 'VeeColumn',

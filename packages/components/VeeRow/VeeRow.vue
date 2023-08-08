@@ -15,7 +15,7 @@ import {
   DEFAULT_GRID_COLUMNS_GAP,
   GRID_COLS_GAP_CLASS_PREFIX,
   GRID_COLS_CLASS_PREFIX_GRID,
-} from './constants';
+} from '@components/VeeRow/constants';
 
 export default defineComponent({
   name: 'VeeRow',
