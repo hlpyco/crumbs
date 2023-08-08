@@ -9,7 +9,7 @@ import { defineComponent } from 'vue';
 
 import { classBuilder } from '@/utils';
 
-import { DEFAULT_BUTTON_COLOR } from './constants';
+import { DEFAULT_BUTTON_COLOR } from '@components/VeeButton/constants';
 
 export default defineComponent({
   name: 'VeeButton',
