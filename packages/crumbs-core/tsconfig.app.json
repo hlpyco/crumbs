@@ -1,0 +1,15 @@
+{
+  "include": ["**/*"],
+  "exclude": ["tests/*"],
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@models/*": ["./models/*"],
+      "@managers/*": ["./managers/*"],
+      "@builders/*": ["./builders/*"],
+      "@constants/*": ["./constants/*"],
+    }
+  }
+}

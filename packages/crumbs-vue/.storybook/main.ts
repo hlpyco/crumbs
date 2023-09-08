@@ -2,7 +2,7 @@ import type { StorybookConfig } from '@storybook/vue-vite';
 
 const config: StorybookConfig = {
   stories: [
-    '../packages/components/**/stories.@(js|jsx|mjs|ts|tsx)',
+    '../components/**/stories.@(js|jsx|mjs|ts|tsx)',
   ],
   addons: [
     '@storybook/addon-links',
