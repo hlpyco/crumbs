@@ -24,7 +24,7 @@ export function configureTheme(theme?: Theme) {
     for (const color in theme[mode]) {
       document.documentElement.style.setProperty(
         `--crumbs-${mode}-${color}`,
-        mode[color],
+        theme[mode][color],
       );
     }
   }

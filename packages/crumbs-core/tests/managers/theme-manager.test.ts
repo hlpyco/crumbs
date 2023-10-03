@@ -14,12 +14,13 @@ describe('theme manager', () => {
         theme = themeFactory.build();
     });
 
-    test('configure theme with no provided theme', () => {
+    test('configure theme with default theme', () => {
         configureTheme();
 
         expect(getStyleValue('--crumbs-light-primary')).toBe('#00dc96');
         expect(getStyleValue('--crumbs-light-secondary')).toBe('#0039ee');
         expect(getStyleValue('--crumbs-light-error')).toBe('#d31e1e');
+
         expect(getStyleValue('--crumbs-dark-primary')).toBe('#00dc96');
         expect(getStyleValue('--crumbs-dark-secondary')).toBe('#0039ee');
         expect(getStyleValue('--crumbs-dark-error')).toBe('#d31e1e');
@@ -31,6 +32,7 @@ describe('theme manager', () => {
         expect(getStyleValue('--crumbs-light-primary')).toBe(theme.light.primary);
         expect(getStyleValue('--crumbs-light-secondary')).toBe(theme.light.secondary);
         expect(getStyleValue('--crumbs-light-error')).toBe(theme.light.error);
+
         expect(getStyleValue('--crumbs-dark-primary')).toBe(theme.dark.primary);
         expect(getStyleValue('--crumbs-dark-secondary')).toBe(theme.dark.secondary);
         expect(getStyleValue('--crumbs-dark-error')).toBe(theme.dark.error);

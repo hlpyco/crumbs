@@ -12,6 +12,7 @@
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
     "factory.ts": "^1.4.1",
+    "jsdom": "^22.1.0",
     "vitest": "^0.34.4"
   }
 }
