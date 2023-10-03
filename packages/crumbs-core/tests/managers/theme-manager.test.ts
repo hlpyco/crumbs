@@ -1,14 +1,14 @@
 import { beforeEach, describe, expect, test } from 'vitest'
-import { configureTheme } from '../../managers/theme-manager';
-import { themeFactory } from '../factories/theme';
-import Theme from '../../models/theme';
+import { ThemesManager } from '../../managers/themes';
+import { themeFactory } from '../factories/themes';
+import Themes from '../../models/themes';
 
 function getStyleValue(key: string): string {
     return document.documentElement.style.getPropertyValue(key)
 }
 
 describe('theme manager', () => {
-    let theme: Theme;
+    let theme: Themes;
 
     beforeEach(() => {
         theme = themeFactory.build();

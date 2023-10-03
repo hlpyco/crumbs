@@ -9,6 +9,7 @@
       "@models/*": ["./models/*"],
       "@managers/*": ["./managers/*"],
       "@builders/*": ["./builders/*"],
+      "@constants": ["./constants"],
       "@constants/*": ["./constants/*"],
     }
   }

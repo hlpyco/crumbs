@@ -1,18 +1,19 @@
 {
-  "name": "crumbs-vue-core",
+  "name": "crumbs-core",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "vitest"
-  },
-  "dependencies": {
-    "vue": "^2.7.7"
+    "test:unit": "vitest",
+    "compile:css": "npx tailwindcss -i ./styles/tailwind.css -o ./styles/crumbs.css"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
+    "autoprefixer": "^10.4.16",
     "factory.ts": "^1.4.1",
     "jsdom": "^22.1.0",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.3",
     "vitest": "^0.34.4"
   }
 }
