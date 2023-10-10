@@ -2,9 +2,18 @@ import { test } from 'vitest';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+    resolve: {
+        alias: {
+            "@/*": "./*",
+            "@models/*": "./models/*",
+            "@managers/*": "./managers/*",
+            "@builders/*": "./builders/*",
+            "@constants": "./constants",
+            "@constants/*": "./constants/*",
+        }
+    },
     test: {
-        environmentMatchGlobs: [
-            ['tests/**', 'jsdom'],
-        ]
+        include: ['tests/**'],
+        environment: 'jsdom',
     }
 });

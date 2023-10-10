@@ -1,16 +1,18 @@
 import CONSTANTS from '@constants';
+import Theme from '@models/theme';
 import type Themes from '@models/themes';
 
 class ThemesManager {
-  themes: Themes;
-  activeTheme: string;
+  private themes: Themes;
+  private activeThemeName: string;
 
   constructor(themes?: Themes) {
     this.themes = themes ? themes : CONSTANTS.themes.base;
-    this.activeTheme = 
+    this.activeThemeName = "light";
   };
 
   configure() {
+    this.configureActiveTheme();
     this.configureColors();
   };
 
@@ -30,24 +32,43 @@ class ThemesManager {
   };
 
   private configureActiveTheme() {
-    const application = localStorage.getItem("theme");
+    const application = localStorage.getItem("crumbs-theme");
     const system = window.matchMedia("(prefers-color-scheme: dark)")?.matches;
-    const base = "light";
+    let themeName = "light";
 
-    if (application) {
-      // Define preferences set and get methods for retrieving application;
-      return;
+    if (this.isValidTheme(application)) {
+      themeName = application;
+    } else if (system) {
+      themeName = "dark"
     }
 
-    if (system) {
-      // Define system retrieve method;
-      return;
-    }
-
-    return base;
+    this.activeThemeName = themeName;
   };
 
-  getColor(key: string) {}
+  private isValidTheme(themeName: string | null | undefined): boolean {
+    return themeName && Object.keys(this.themes).includes(themeName);
+  }
+
+  setActiveTheme(themeName: string) {
+    if (!this.isValidTheme(themeName)) {
+      throw new Error(`Theme ${themeName} does not exist.`);
+    }
+
+    localStorage.setItem("crumbs-theme", themeName);
+    this.configure();
+  }
+
+  getSupportedThemeModes(): string[] {
+    return Object.keys(this.themes);
+  }
+
+  getCurrentTheme(): Theme {
+    return this.themes[this.activeThemeName];
+  }
+
+  getColor(key: string): string {
+    return this.getCurrentTheme()[key] || key;
+  }
 }
 
 export { ThemesManager };

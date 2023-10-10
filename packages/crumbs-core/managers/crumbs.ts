@@ -13,6 +13,7 @@ interface CrumbsOptions {
 export default function init(options: CrumbsOptions = {}) {
   const themes = new ThemesManager(options.themes);
   themes.configure();
+
   const style = styleBuilder(...options.styles ?? [])
   const cls = classBuilder(...options.classes ?? [])
   return new Crumbs(style, cls);
