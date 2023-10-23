@@ -1,4 +1,8 @@
+import Vue from 'vue';
 import type { Preview } from '@storybook/vue';
+import { createCrumbs } from '..';
+
+Vue.use(createCrumbs());
 
 const preview: Preview = {
   parameters: {
@@ -12,5 +16,4 @@ const preview: Preview = {
     },
   },
 };
-
 export default preview;

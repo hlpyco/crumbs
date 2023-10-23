@@ -1,4 +1,4 @@
-import type Themes from '@models/themes';
+import type Themes from '../models/themes';
 
 const BASE: Themes = {
   light: {

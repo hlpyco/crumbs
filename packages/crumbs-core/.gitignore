@@ -26,3 +26,7 @@ dist-ssr
 *.sln
 *.sw?
 .history
+
+# TypeScript
+
+tsconfig*.tsbuildinfo

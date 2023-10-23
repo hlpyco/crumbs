@@ -1,6 +1,6 @@
-import CONSTANTS from '@constants';
-import Theme from '@models/theme';
-import type Themes from '@models/themes';
+import CONSTANTS from '../constants';
+import Theme from '../models/theme';
+import type Themes from '../models/themes';
 
 class ThemesManager {
   private themes: Themes;
