@@ -16,5 +16,5 @@ export default function init(options: CrumbsOptions = {}) {
 
   const style = styleBuilder(...options.styles ?? [])
   const cls = classBuilder(...options.classes ?? [])
-  return new Crumbs(style, cls);
+  return new Crumbs(style, cls, themes);
 };

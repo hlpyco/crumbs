@@ -12,9 +12,7 @@ export function createCrumbs(options: CrumbsOptions = {}) {
       Vue.component(componentKey, crumbs[componentKey]);
     }
 
-    Object.defineProperty(Vue.prototype, '$crumbs', crumbs);
-
-    console.log("CACCA", crumbs);
+    Vue.prototype.$crumbs = crumbs;
   };
 
   return {
