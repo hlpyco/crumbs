@@ -4,17 +4,21 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import composables from '../../composables';
 
 export default defineComponent({
   name: 'VeeButton',
 
   props: {
     title: String,
+
     color: {
       type: String,
       default: 'primary',
     },
-    style: null,
+
+    ...composables.makeStyleProps(),
+    ...composables.makeClassProps(),
   },
 
   computed: {

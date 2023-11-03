@@ -1,8 +1,11 @@
 import { PropOptions } from 'vue';
 
-export const styleProps: PropOptions = {
-//  style: {
-    type: Object,
-    default: null,
-//  },
-}
+export function makeStyleProps(): Record<string, PropOptions> {
+    return {
+      style: {
+        type: Object,
+        default: {},
+      },
+    };
+  }
+  

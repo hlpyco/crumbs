@@ -1,9 +1,7 @@
 import { makeClassProps } from './class';
-import { styleProps } from './style';
-import { makeColorProps } from './color';
+import { makeStyleProps } from './style';
 
 export default {
     makeClassProps,
-    styleProps,
-    makeColorProps,
+    makeStyleProps,
 }
