@@ -10,13 +10,8 @@ module.exports = {
       xl: '2560px',
       //xxl: '>2560px',
     },
-    fontFamily: {
-      sans: ['Nunito'],
-      serif: ['Nunito'],
-    },
-    extend: {
-      // TODO: add typography, same of vuetify https://tailwindcss.com/docs/typography-plugin#undoing-typography-styles
-    },
+
+    extend: {},
   },
   plugins: [
     require('@tailwindcss/typography'),

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/vue';
-
 import VeeButton from './VeeButton.vue';
 
 const meta: Meta<typeof VeeButton> = { component: VeeButton };
@@ -15,6 +14,6 @@ export const Primary: Story = {
 
   args: {
     color: 'primary',
-    title: 'Button',
+    text: 'Button',
   },
 };
