@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test:unit": "vitest",
-    "compile:css": "npx tailwindcss -i ./styles/tailwind.css -o ./styles/crumbs.css"
+    "compile:css": "npx tailwindcss -i ./styles/tailwind.css -o ./styles/crumbs.css",
+    "watch:css": "npx tailwindcss -i ./styles/tailwind.css -o ./styles/crumbs.css --watch"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
