@@ -11,7 +11,11 @@ module.exports = {
       //xxl: '>2560px',
     },
 
-    extend: {},
+    extend: {
+      fontFamily: {
+        'default': ['Nunito', 'sans-serif']
+      }
+    },
   },
   plugins: [
     require('@tailwindcss/typography'),

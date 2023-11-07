@@ -3,6 +3,7 @@ import type Themes from '../models/themes';
 import { classBuilder } from '../builders/class';
 import { styleBuilder } from '../builders/style';
 import { ThemesManager } from '../managers/themes';
+import '../styles/crumbs.css';
 
 export interface CrumbsOptions {
   readonly themes?: Themes;
