@@ -1,3 +1,4 @@
 import VeeButton from './VeeButton';
+import VeeIcon from './VeeIcon';
 
-export { VeeButton };
+export { VeeButton, VeeIcon };

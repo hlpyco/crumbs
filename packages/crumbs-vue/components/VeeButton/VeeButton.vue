@@ -8,6 +8,7 @@
 import { PropType, defineComponent } from 'vue';
 import composables from '../../composables';
 import { VeeButtonSize, VeeButtonVariant } from './vee-button';
+import { classBuilder } from 'crumbs-core/builders/class';
 
 export default defineComponent({
   name: 'VeeButton',
@@ -41,63 +42,82 @@ export default defineComponent({
       default: 'primary',
     },
 
+    textColor: {
+      type: String,
+      default: 'white',
+    },
+
+    disabledColor: {
+      type: String,
+      default: 'greyLighten50',
+    },
+
+    disabledTextColor: {
+      type: String,
+      default: 'greyLighten30',
+    },
+
     ...composables.makeStyleProps(),
     ...composables.makeClassProps(),
   },
 
-  watch: {
-    color: function () {},
-  },
-
   computed: {
-    veeVars(): Record<string, any> {
-      const color = this.ensureColor();
+    veeColor(): string {
+      return this.$crumbs.themesManager.getColorRef(this.color);
+    },
 
-      return {
-        "--vee-button-color": color,
-        "--vee-button-border-color": color,
-        "--vee-button-background-color": color,
-      };
+    veeTextColor(): string {
+      return this.$crumbs.themesManager.getColorRef(this.textColor);
+    },
+
+    veeDisabled(): string {
+      return this.$crumbs.themesManager.getColorRef(this.disabledColor);
+    },
+    
+    veeDisabledTextColor(): string {
+      return this.$crumbs.themesManager.getColorRef(this.disabledTextColor);
     },
 
     veeStyle(): Record<string, any> {
       return {
-        ...this.veeVars,
         ...this.style,
       };
     },
 
     veeClass(): string {
       const size = this.ensureSizeValid();
+      const variant = this.ensureVariantValid();
 
       let classes = [
         'vee-button',
         'crumbs-button',
         `size-${size}`,
-        `variant-${this.variant}`
+        `variant-${variant}`
       ]
 
-      if (this.disabled) classes.push('disabled');
-      return classes.join(' ');
+      if (this.disabled) {
+        classes.push(
+          'vee-button-disabled',
+          `disabled-${variant}`,
+        );
+      }
+
+      return classBuilder(classes);
     }
   },
 
   methods: {
-    ensureColor() {
-      switch(this.disabled) {
-        case true:
-          return '#a6a6a6';
-
-        default:
-          return this.$crumbs.themesManager.getColor(this.color);
-      }
-    },
-
     ensureSizeValid() {
       return !Object.values(VeeButtonSize).includes(this.size)
         ? VeeButtonSize.default
         : this.size;
-    }
+    },
+
+    ensureVariantValid() {
+      return !Object.values(VeeButtonVariant).includes(this.variant)
+        ? VeeButtonVariant.default
+        : this.variant;
+    },
   }
 });
 </script>
@@ -106,8 +126,12 @@ export default defineComponent({
 .vee-button {
   border: 0;
   border-radius: 2.875rem;
-  color: #ffffff;
+  color: v-bind('veeTextColor');
   text-transform: uppercase;
+}
+
+.vee-button-disabled {
+  cursor: not-allowed;
 }
 
 .size-default {
@@ -122,21 +146,31 @@ export default defineComponent({
 }
 
 .variant-default {
-  background-color: var(--vee-button-background-color);
+  background-color: v-bind('veeColor');
 }
 
 .variant-text {
-  color: #a6a6a6;
+  color: v-bind('veeColor');
   background-color: transparent;
 }
 
-.variant-outline {
-  color: var(--vee-button-color);
+.variant-outlined {
+  color: v-bind('veeColor');
   background-color: transparent;
-  border: solid 0.125rem var(--vee-button-border-color);
+  border: solid 0.125rem v-bind('veeColor');
 }
 
-.disabled {
-  cursor: not-allowed;
+.disabled-default {
+  color: v-bind('veeDisabledTextColor');
+  background-color: v-bind('veeDisabled');
+}
+
+.disabled-text {
+  color: v-bind('veeDisabledTextColor');
+}
+
+.disabled-outlined {
+  color: v-bind('veeDisabledTextColor');
+  border: solid 0.125rem v-bind('veeDisabled');
 }
 </style>

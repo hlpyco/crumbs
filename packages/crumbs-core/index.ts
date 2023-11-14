@@ -1,3 +1,3 @@
 import createCrumbs from './managers/crumbs';
 
-export default createCrumbs
+export default createCrumbs;

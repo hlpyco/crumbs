@@ -134,7 +134,7 @@ describe('theme manager', () => {
         });
     });
 
-    describe('get color', () => {
+    describe('get color var', () => {
         let manager: ThemesManager;
 
         beforeEach(() => {
@@ -142,12 +142,29 @@ describe('theme manager', () => {
             manager.configure();
         });
 
-        test('get color with valid key', () => {
-            expect(manager.getColor('primary')).toBe(themes.light.primary);
+        test('get color var with valid key', () => {
+            expect(manager.getColorVar('primary')).toBe('--crumbs-light-primary');
         });
 
-        test('get color with invalid key', () => {
-            expect(manager.getColor('invalid')).toBe('invalid');
+        test('get color var with invalid key', () => {
+            expect(manager.getColorVar('invalid')).toBe('invalid');
+        });
+    });
+
+    describe('get color ref', () => {
+        let manager: ThemesManager;
+
+        beforeEach(() => {
+            manager = new ThemesManager(themes);
+            manager.configure();
+        });
+
+        test('get color ref with valid key', () => {
+            expect(manager.getColorRef('primary')).toBe('var(--crumbs-light-primary)');
+        });
+
+        test('get color ref with invalid key', () => {
+            expect(manager.getColorRef('invalid')).toBe('invalid');
         });
     });
 

@@ -24,7 +24,7 @@ class ThemesManager {
 
       for (const color in this.themes[theme]) {
         document.documentElement.style.setProperty(
-          `--crumbs-${theme}-${color}`,
+          this.buildColorVar(theme, color),
           this.themes[theme][color],
         );
       }
@@ -66,8 +66,26 @@ class ThemesManager {
     return this.themes[this.activeThemeName];
   }
 
-  getColor(key: string): string {
-    return this.getCurrentTheme()[key] || key;
+  getColorVar(key: string): string {
+    if (this.getCurrentTheme()[key]) {
+      return this.buildColorVar(this.activeThemeName, key);
+    }
+
+    return key;
+  }
+
+  getColorRef(key: string): string {
+    const colorVar = this.getColorVar(key);
+
+    if (colorVar != key) {
+      return `var(${colorVar})`;
+    }
+
+    return key;
+  }
+
+  private buildColorVar(theme: string, colorName: string): string {
+    return `--crumbs-${theme}-${colorName}`;
   }
 }
 

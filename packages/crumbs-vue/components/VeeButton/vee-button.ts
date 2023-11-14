@@ -1,7 +1,7 @@
 enum VeeButtonVariant {
   text = 'text',
   default = 'default',
-  outline = 'outline',
+  outlined = 'outlined',
 };
 
 enum VeeButtonSize {
