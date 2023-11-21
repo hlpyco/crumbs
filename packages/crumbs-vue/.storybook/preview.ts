@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import type { Preview } from '@storybook/vue';
 import { createCrumbs } from '..';
+import options from '../options';
 
-Vue.use(createCrumbs());
+Vue.use(createCrumbs(options));
 
 const preview: Preview = {
   parameters: {
