@@ -1,11 +1,12 @@
-import Provider from "models/provider";
+import IconProvider from "models/icons/provider";
+import IconConstants from '../constants/icons';
 
 class IconsManager {
-  private providers: Provider[];
-  private defaultProvider: Provider;
+  private providers: IconProvider[];
+  private defaultProvider: IconProvider;
   private defaultFamily: string;
 
-  constructor(providers: Provider[]) {
+  constructor(providers: IconProvider[]) {
     this.providers = providers;
     this.setDefaultProvider();
     this.setDefaultFamily();
@@ -27,7 +28,7 @@ class IconsManager {
 
   private setDefaultProvider() {
     const provider = this.providers.find(
-      (element: Provider) => element.isDefault
+      (element: IconProvider) => element.isDefault
     );
 
     if (!provider) {
@@ -47,6 +48,11 @@ class IconsManager {
     const separator = this.defaultProvider.separator;
     const family = this.defaultFamily;
     return `${prefix}${separator}${family} ${prefix}${separator}${name}`
+  }
+
+  public getSize(name: string) {
+    const size = IconConstants.size[name];
+    return size ? size : IconConstants.size.default;
   }
 }
 

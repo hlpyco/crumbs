@@ -1,9 +1,9 @@
 enum VeeIconSize {
-  xSmall = 'xSmall',
+  xSmall = 'x-small',
   small = 'small',
   default = 'default',
   large = 'large',
-  xLarge = 'xLarge',
+  xLarge = 'x-large',
 };
 
 export {

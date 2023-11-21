@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue';
 
 import VeeIcon from './VeeIcon.vue';
+import { VeeIconSize } from './vee-icon';
 
 const meta: Meta<typeof VeeIcon> = { component: VeeIcon };
 type Story = StoryObj<typeof VeeIcon>;
@@ -14,6 +15,13 @@ export const Primary: Story = {
   }),
 
   args: {
-    icon: 'example',
+    name: 'user',
   },
+
+  argTypes: {
+    size: {
+      options: Object.values(VeeIconSize),
+      control: { type: 'select' },
+    },
+  }
 };

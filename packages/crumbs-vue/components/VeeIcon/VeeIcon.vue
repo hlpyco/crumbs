@@ -1,16 +1,5 @@
 <template>
-  <svg
-    role="img"
-    xmlns="http://www.w3.org/2000/svg"
-    :width="width"
-    :height="height"
-    :aria-labelledby="icon"
-    :fill="veeColor"
-    :stroke="veeColor"
-  >
-    <title :id="icon">{{ icon }}</title>
-    <component :is="icon" />
-  </svg>
+  <i>{{ veeSize }}</i>
 </template>
 
 <script lang="ts">
@@ -22,7 +11,9 @@ export default defineComponent({
   name: 'VeeIcon',
 
   props: {
-    icon: String,
+    name: String,
+    family: String,
+    provider: String,
 
     size: {
       type: String as PropType<VeeIconSize>,
@@ -41,6 +32,14 @@ export default defineComponent({
   computed: {
     veeColor(): string {
       return this.$crumbs.themesManager.getColorRef(this.color);
+    },
+
+    veeSize(): string {
+      return this.$crumbs.iconsManager.getSize(this.size);
+    },
+
+    veeName(): string {
+      return this.$crumbs.iconsManager.locate(this.name);
     },
 
     veeStyle(): Record<string, any> {
@@ -63,7 +62,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style scoped>
-
-</style>

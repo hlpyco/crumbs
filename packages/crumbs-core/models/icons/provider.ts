@@ -1,4 +1,4 @@
-export default interface Provider {
+export default interface IconProvider {
   readonly cdn?: string;
   readonly name?: string;
   readonly prefix?: string;

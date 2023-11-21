@@ -1,3 +1,4 @@
+import { IconsManager } from "managers/icons";
 import { ThemesManager } from "managers/themes";
 
 export default class Crumbs {
@@ -5,5 +6,6 @@ export default class Crumbs {
         readonly style: string,
         readonly cls: string,
         readonly themesManager: ThemesManager,
+        readonly iconsManager: IconsManager,
     ) { }
 }
