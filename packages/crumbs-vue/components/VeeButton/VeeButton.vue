@@ -1,17 +1,31 @@
 <template>
   <button v-bind="$props" :class="veeClass" :style="veeStyle">
     {{ text }}
+
+    <vee-icon
+      v-if="icon"
+      size="x-small"
+      class="vee-button-icon"
+      :name="icon"
+      :color="textColor"
+    ></vee-icon>
   </button>
 </template>
 
 <script lang="ts">
 import { PropType, defineComponent } from 'vue';
 import composables from '../../composables';
-import { VeeButtonSize, VeeButtonVariant } from './vee-button';
 import { classBuilder } from 'crumbs-core/builders/class';
+import { VeeButtonSize, VeeButtonVariant } from './vee-button';
+
+import VeeIcon from '../VeeIcon/VeeIcon.vue';
 
 export default defineComponent({
   name: 'VeeButton',
+
+  components: {
+    VeeIcon
+  },
 
   props: {
     icon: String,
@@ -124,10 +138,16 @@ export default defineComponent({
 
 <style scoped>
 .vee-button {
+  /* display: flex;
+  align-items: center; */
   border: 0;
   border-radius: 2.875rem;
   color: v-bind('veeTextColor');
   text-transform: uppercase;
+}
+
+.vee-button-icon {
+  /* margin-left: 0.5rem; */
 }
 
 .vee-button-disabled {

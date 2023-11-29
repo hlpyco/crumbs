@@ -17,7 +17,7 @@ export default defineComponent({
     provider: String,
 
     size: {
-      type: String as PropType<VeeIconSize>,
+      type: String,
       default: 'default',
     },
 
