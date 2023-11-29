@@ -49,12 +49,12 @@ export default defineComponent({
 
     disabledColor: {
       type: String,
-      default: 'greyLighten50',
+      default: 'greyLighten30',
     },
 
     disabledTextColor: {
       type: String,
-      default: 'greyLighten30',
+      default: 'greyLighten50',
     },
 
     ...composables.makeStyleProps(),
@@ -161,6 +161,7 @@ export default defineComponent({
 }
 
 .disabled-default {
+  font-weight: 700;
   color: v-bind('veeDisabledTextColor');
   background-color: v-bind('veeDisabled');
 }
