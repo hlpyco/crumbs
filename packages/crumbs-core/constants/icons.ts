@@ -1,11 +1,11 @@
 import IconSize from 'models/icons/size';
 
 const size: IconSize = {
-  'x-small': '1em',
-  'small': '1.25em',
-  'default': '1.5em',
-  'large': '1.75em',
-  'x-large': '2em',
+  'x-small': '1rem',
+  'small': '1.25rem',
+  'default': '1.5rem',
+  'large': '1.75rem',
+  'x-large': '2rem',
 };
 
 export default {

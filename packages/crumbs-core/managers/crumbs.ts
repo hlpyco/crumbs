@@ -6,7 +6,7 @@ import { ThemesManager } from '../managers/themes';
 import { IconsManager } from './icons';
 
 import type Themes from '../models/themes';
-import type Provider from 'models/provider';
+import type Provider from 'models/icons/provider';
 
 import '../styles/crumbs.css';
 

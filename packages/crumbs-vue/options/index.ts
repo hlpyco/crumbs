@@ -1,14 +1,13 @@
-import Provider from 'crumbs-core/models/provider';
+import IconProvider from 'crumbs-core/models/icons/provider';
 
-const providers: Provider[] = [
-  {
+const providers: Record<string, IconProvider> = {
+  'font-awesome': {
     prefix: 'fa',
     separator: '-',
-    name: 'font-awesome',
-    families: ['regular'],
-    cdn: 'https://kit.fontawesome.com/c2f585ff19.js',
+    families: ['regular', 'solid'],
+    cdn: 'https://kit.fontawesome.com/7b21dfb942.js',
   }
-]
+}
 
 export default {
   icons: providers,

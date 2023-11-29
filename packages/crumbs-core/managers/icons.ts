@@ -13,8 +13,10 @@ class IconsManager {
   };
 
   configure() {
-    for (let index = 0; index <= this.providers.length; index++) {
-      const provider = this.providers[index];
+    const providers = Object.values(this.providers);
+
+    for (let index = 0; index <= providers.length; index++) {
+      const provider = providers[index];
       this.configureCDN(provider?.cdn, provider?.crossOrigin);
     }
   };
@@ -27,12 +29,14 @@ class IconsManager {
   }
 
   private setDefaultProvider() {
-    const provider = this.providers.find(
+    const providers = Object.values(this.providers);
+
+    const provider = providers.find(
       (element: IconProvider) => element.isDefault
     );
 
     if (!provider) {
-      this.defaultProvider = this.providers[0];
+      this.defaultProvider = providers[0];
       return;
     }
 
@@ -43,16 +47,26 @@ class IconsManager {
     this.defaultFamily = this.defaultProvider.families[0];
   }
 
-  public locate(name: string) {
-    const prefix = this.defaultProvider.prefix;
-    const separator = this.defaultProvider.separator;
-    const family = this.defaultFamily;
-    return `${prefix}${separator}${family} ${prefix}${separator}${name}`
+  private getProvider(name?: string) {
+    return this.providers[name] || this.defaultProvider;
+  }
+
+  private getFamily(familyName?: string, provider?: IconProvider) {
+    const family =  new Set(provider.families || []);
+    return family.has(familyName) ? familyName : this.defaultFamily;
   }
 
   public getSize(name: string) {
     const size = IconConstants.size[name];
     return size ? size : IconConstants.size.default;
+  }
+
+  public locate(iconName: string, familyName?: string, providerName?: string) {
+    const provider = this.getProvider(providerName);
+    const family = this.getFamily(familyName, provider);
+    const prefix = provider.prefix;
+    const separator = provider.separator;
+    return `${prefix}${separator}${family} ${prefix}${separator}${iconName}`;
   }
 }
 

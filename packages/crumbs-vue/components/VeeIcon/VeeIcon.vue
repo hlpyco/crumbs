@@ -1,11 +1,12 @@
 <template>
-  <i>{{ veeSize }}</i>
+  <i v-bind="$props" :class="veeClass" :style="veeStyle"></i>
 </template>
 
 <script lang="ts">
 import { PropType, defineComponent } from 'vue';
 import { VeeIconSize } from './vee-icon';
 import composables from '../../composables';
+import { classBuilder } from 'crumbs-core/builders/class';
 
 export default defineComponent({
   name: 'VeeIcon',
@@ -39,7 +40,11 @@ export default defineComponent({
     },
 
     veeName(): string {
-      return this.$crumbs.iconsManager.locate(this.name);
+      return this.$crumbs.iconsManager.locate(
+        this.name,
+        this.family,
+        this.provider
+      );
     },
 
     veeStyle(): Record<string, any> {
@@ -49,16 +54,20 @@ export default defineComponent({
     },
 
     veeClass(): string {
-      return '';
+      let classes = [
+        'vee-icon',
+        this.veeName,
+      ];
+
+      return classBuilder(classes);
     }
   },
-
-  methods: {
-    ensureSizeValid() {
-      return !Object.values(VeeIconSize).includes(this.size)
-        ? VeeIconSize.default
-        : this.size;
-    },
-  }
 });
 </script>
+
+<style scoped>
+.vee-icon {
+  color: v-bind('veeColor');
+  font-size: v-bind('veeSize');
+}
+</style>
