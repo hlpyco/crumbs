@@ -1,0 +1,2 @@
+import{V as a}from"./VeeIcon.e78568fa.js";import"./vue.esm.ca752a23.js";var s=(r=>(r.xSmall="x-small",r.small="small",r.default="default",r.large="large",r.xLarge="x-large",r))(s||{});const o={component:a},p={render:(r,{argTypes:t})=>({components:{VeeIcon:a},props:Object.keys(t),template:'<vee-icon v-bind="$props" v-on="$props" />'}),args:{name:"user"},argTypes:{size:{options:Object.values(s),control:{type:"select"}}}};export{p as Primary,o as default};
+//# sourceMappingURL=stories.28a2695a.js.map
