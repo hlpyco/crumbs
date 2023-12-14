@@ -13,7 +13,7 @@ describe('IconsManager', () => {
   let defaultFamily: string;
 
   beforeEach(() => {
-    iconProviders = iconProviderFactory.buildList(20);
+    iconProviders = iconProviderFactory.buildList(3);
     manager = new IconsManager(iconProviders);
 
     defaultProvider = iconProviders.find((element) => element.isDefault) ?? iconProviders[0];
@@ -21,6 +21,30 @@ describe('IconsManager', () => {
   });
 
   describe('configure', () => {
+    beforeEach(() => {
+      document.head.innerHTML = '';
+    });
+
+    test('configure with no providers', () => {
+      manager = new IconsManager();
+      manager.configure();
+
+      expect(document.head.childNodes.length).toBe(0);
+    });
+
+    test('configure with one provider', () => {
+      manager = new IconsManager([iconProviders[0]]);
+      manager.configure();
+
+      expect(document.head.childNodes.length).toBe(1);
+
+      const element = document.head.childNodes[0];
+      const script = element as HTMLScriptElement;
+
+      expect(script.src).toBe(iconProviders[0].cdn);
+      expect(script.crossOrigin).toBe(iconProviders[0].crossOrigin);
+    });
+
     test('configure with providers', () => {
       manager.configure();
 
