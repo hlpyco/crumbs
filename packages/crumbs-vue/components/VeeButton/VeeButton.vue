@@ -63,12 +63,12 @@ export default defineComponent({
 
     disabledColor: {
       type: String,
-      default: 'greyLighten30',
+      default: 'grey-lighten-5',
     },
 
     disabledTextColor: {
       type: String,
-      default: 'greyLighten50',
+      default: 'grey-lighten-1',
     },
 
     ...composables.makeStyleProps(),
