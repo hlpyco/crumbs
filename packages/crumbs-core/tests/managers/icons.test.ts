@@ -6,18 +6,23 @@ import IconConstants from '../../constants/icons';
 import { faker } from '@faker-js/faker';
 
 describe('IconsManager', () => {
-  let iconProviders: IconProvider[];
-  let manager: IconsManager;
-
+  let iconProviders: Record<string, IconProvider>;
+  let iconProviderValues: IconProvider[];
   let defaultProvider: IconProvider;
   let defaultFamily: string;
 
-  beforeEach(() => {
-    iconProviders = iconProviderFactory.buildList(3);
-    manager = new IconsManager(iconProviders);
+  let manager: IconsManager;
 
-    defaultProvider = iconProviders.find((element) => element.isDefault) ?? iconProviders[0];
+  beforeEach(() => {
+    iconProviders = iconProviderFactory.buildList(3).reduce((object, item) => ({
+      ...object,
+      [item.name!]: item,
+    }), {} as Record<string, IconProvider>);
+    iconProviderValues = Object.values(iconProviders);
+    defaultProvider = iconProviderValues.find((element) => element.isDefault) ?? iconProviderValues[0];
     defaultFamily = defaultProvider.families![0];
+
+    manager = new IconsManager(iconProviders);
   });
 
   describe('configure', () => {
@@ -33,7 +38,7 @@ describe('IconsManager', () => {
     });
 
     test('configure with one provider', () => {
-      manager = new IconsManager([iconProviders[0]]);
+      manager = new IconsManager([iconProviderValues[0]]);
       manager.configure();
 
       expect(document.head.childNodes.length).toBe(1);
@@ -41,8 +46,8 @@ describe('IconsManager', () => {
       const element = document.head.childNodes[0];
       const script = element as HTMLScriptElement;
 
-      expect(script.src).toBe(iconProviders[0].cdn);
-      expect(script.crossOrigin).toBe(iconProviders[0].crossOrigin);
+      expect(script.src).toBe(iconProviderValues[0].cdn);
+      expect(script.crossOrigin).toBe(iconProviderValues[0].crossOrigin);
     });
 
     test('configure with providers', () => {
@@ -52,8 +57,8 @@ describe('IconsManager', () => {
         const element = document.head.childNodes[index];
         const script = element as HTMLScriptElement;
 
-        expect(script.src).toBe(iconProviders[index].cdn);
-        expect(script.crossOrigin).toBe(iconProviders[index].crossOrigin);
+        expect(script.src).toBe(iconProviderValues[index].cdn);
+        expect(script.crossOrigin).toBe(iconProviderValues[index].crossOrigin);
       }
     });
   });
@@ -100,14 +105,14 @@ describe('IconsManager', () => {
     });
 
     test('locate with custom provider and family included in provider', () => {
-      const provider = iconProviders[1];
+      const provider = iconProviderValues[1];
       const family = provider.families![1];
 
       expect(manager.locate(iconName, family, provider.name)).toBe(`${provider.prefix}${provider.separator}${family} ${provider.prefix}${provider.separator}${iconName}`);
     });
 
     test('locate with custom provider and family not included in provider', () => {
-      const provider = iconProviders[1];
+      const provider = iconProviderValues[1];
       const family = 'NOT_INCLUDED_FAMILY';
 
       expect(manager.locate(iconName, family, provider.name)).toBe(`${provider.prefix}${provider.separator}${defaultFamily} ${provider.prefix}${provider.separator}${iconName}`);

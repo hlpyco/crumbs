@@ -4,19 +4,13 @@ import { toCamelCase } from "../misc/normalizers";
 import IconSize from "models/icons/size";
 
 class IconsManager {
-  private providers: IconProvider[];
-  private indexedProviders: Record<string, IconProvider>;
+  private providers: Record<string, IconProvider>;
 
   private defaultProvider: IconProvider;
   private defaultFamily: string;
 
-  constructor(providers?: IconProvider[]) {
-    this.providers = providers || [];
-    
-    this.indexedProviders = {};
-    this.providers.forEach((provider) => {
-      this.indexedProviders[provider.name] = provider;
-    });
+  constructor(providers?: Record<string, IconProvider>) {
+    this.providers = providers || {};
 
     this.setDefaultProvider();
     this.setDefaultFamily();
@@ -61,7 +55,7 @@ class IconsManager {
   }
 
   private getProvider(name?: string): IconProvider {
-    return this.indexedProviders[name] || this.defaultProvider
+    return this.providers[name] || this.defaultProvider;
   }
 
   private getFamily(familyName?: string, provider?: IconProvider): string {
