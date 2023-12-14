@@ -3,7 +3,10 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
     test: {
-        include: ['tests/**'],
+        include: [
+            'tests/**/*.test.*',
+            'tests/**/*.spec.*'
+        ],
         environment: 'jsdom',
     }
 });

@@ -1,6 +1,7 @@
 import CONSTANTS from '../constants';
 import Theme from '../models/theme';
 import type Themes from '../models/themes';
+import { toKebabCase } from '../misc/normalizers';
 
 class ThemesManager {
   private themes: Themes;
@@ -85,7 +86,7 @@ class ThemesManager {
   }
 
   private buildColorVar(theme: string, colorName: string): string {
-    return `--crumbs-${theme}-${colorName}`;
+    return `--crumbs-${theme}-${toKebabCase(colorName)}`;
   }
 }
 

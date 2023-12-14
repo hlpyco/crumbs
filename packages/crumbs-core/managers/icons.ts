@@ -1,13 +1,23 @@
 import IconProvider from "models/icons/provider";
 import IconConstants from '../constants/icons';
+import { toCamelCase } from "../misc/normalizers";
+import IconSize from "models/icons/size";
 
 class IconsManager {
   private providers: IconProvider[];
+  private indexedProviders: Record<string, IconProvider>;
+
   private defaultProvider: IconProvider;
   private defaultFamily: string;
 
-  constructor(providers: IconProvider[]) {
-    this.providers = providers;
+  constructor(providers?: IconProvider[]) {
+    this.providers = providers || [];
+    
+    this.indexedProviders = {};
+    this.providers.forEach((provider) => {
+      this.indexedProviders[provider.name] = provider;
+    });
+
     this.setDefaultProvider();
     this.setDefaultFamily();
   };
@@ -15,9 +25,12 @@ class IconsManager {
   configure() {
     const providers = Object.values(this.providers);
 
-    for (let index = 0; index <= providers.length; index++) {
+    for (let index = 0; index < providers.length; index++) {
       const provider = providers[index];
-      this.configureCDN(provider?.cdn, provider?.crossOrigin);
+
+      if (provider.cdn) {
+        this.configureCDN(provider.cdn, provider.crossOrigin);
+      }
     }
   };
 
@@ -44,28 +57,30 @@ class IconsManager {
   }
 
   private setDefaultFamily() {
-    this.defaultFamily = this.defaultProvider.families[0];
+    this.defaultFamily = this.defaultProvider?.families[0];
   }
 
-  private getProvider(name?: string) {
-    return this.providers[name] || this.defaultProvider;
+  private getProvider(name?: string): IconProvider {
+    return this.indexedProviders[name] || this.defaultProvider
   }
 
-  private getFamily(familyName?: string, provider?: IconProvider) {
-    const family =  new Set(provider.families || []);
+  private getFamily(familyName?: string, provider?: IconProvider): string {
+    const family = new Set(provider?.families || []);
     return family.has(familyName) ? familyName : this.defaultFamily;
   }
 
-  public getSize(name: string) {
-    const size = IconConstants.size[name];
+  public getSize(name: string): IconSize {
+    const size = IconConstants.size[toCamelCase(name)];
     return size ? size : IconConstants.size.default;
   }
 
-  public locate(iconName: string, familyName?: string, providerName?: string) {
+  public locate(iconName: string, familyName?: string, providerName?: string): string {
     const provider = this.getProvider(providerName);
     const family = this.getFamily(familyName, provider);
+
     const prefix = provider.prefix;
     const separator = provider.separator;
+
     return `${prefix}${separator}${family} ${prefix}${separator}${iconName}`;
   }
 }
