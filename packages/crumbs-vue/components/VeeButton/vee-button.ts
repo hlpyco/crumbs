@@ -9,7 +9,13 @@ enum VeeButtonSize {
   default = 'default',
 };
 
+enum VeeButtonIconPosition {
+  left = 'left',
+  right = 'right',
+};
+
 export {
   VeeButtonSize,
   VeeButtonVariant,
+  VeeButtonIconPosition,
 };

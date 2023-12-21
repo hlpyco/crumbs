@@ -1,9 +1,17 @@
 <template>
   <button v-bind="$props" :class="veeClass" :style="veeStyle">
+    <vee-icon
+      v-if="isLeftIcon()"
+      size="x-small"
+      class="vee-button-icon"
+      :name="icon"
+      :color="textColor"
+    ></vee-icon>
+
     {{ text }}
 
     <vee-icon
-      v-if="icon"
+      v-if="isRightIcon()"
       size="x-small"
       class="vee-button-icon"
       :name="icon"
@@ -16,7 +24,12 @@
 import { PropType, defineComponent } from 'vue';
 import composables from '../../composables';
 import { classBuilder } from 'crumbs-core/builders/class';
-import { VeeButtonSize, VeeButtonVariant } from './vee-button';
+
+import {
+  VeeButtonSize,
+  VeeButtonVariant,
+  VeeButtonIconPosition
+} from './vee-button';
 
 import VeeIcon from '../VeeIcon/VeeIcon.vue';
 
@@ -121,6 +134,14 @@ export default defineComponent({
   },
 
   methods: {
+    isRightIcon() {
+      return !!this.icon && this.iconPosition === VeeButtonIconPosition.right;
+    },
+
+    isLeftIcon() {
+      return !!this.icon && this.iconPosition === VeeButtonIconPosition.left;
+    },
+
     ensureSizeValid() {
       return !Object.values(VeeButtonSize).includes(this.size)
         ? VeeButtonSize.default
@@ -132,7 +153,7 @@ export default defineComponent({
         ? VeeButtonVariant.default
         : this.variant;
     },
-  }
+  },
 });
 </script>
 
