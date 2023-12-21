@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+defaults:
+  run:
+    working-directory: packages/crumbs-vue
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -20,9 +24,7 @@ jobs:
           node-version: 18
 
       - name: Install Dependencies
-        run: |
-          cd packages/crumbs-vue
-          npm install
+        run: npm install
 
       - name: Build Storybook
         run: npm run storybook:build
