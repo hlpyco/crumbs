@@ -1,0 +1,2 @@
+import{V as t,a as o,b as a}from"./VeeButton.91533b75.js";import"./vue.esm.ca752a23.js";import"./VeeIcon.93280038.js";const i={component:t},c={render:(r,{argTypes:e})=>({components:{VeeButton:t},props:Object.keys(e),template:'<vee-button v-bind="$props" v-on="$props" />'}),args:{color:"primary",text:"Button",size:"default",variant:"default"},argTypes:{variant:{options:Object.values(o),control:{type:"select"}},size:{options:Object.values(a),control:{type:"select"}}}};export{c as Primary,i as default};
+//# sourceMappingURL=stories.5bed5c5a.js.map

@@ -1,0 +1,2 @@
+System.register(["./DocsRenderer-NNNQARDV-legacy.794165ac.js","./iframe-legacy.57d3ef65.js","../sb-preview/runtime.js","./_commonjsHelpers-legacy.f6537caa.js","./index-legacy.97c87927.js","./index-legacy.6177b608.js","./index-legacy.5f46787d.js"],(function(e,n){"use strict";return{setters:[function(n){e({SyntaxHighlighter:n.S,createCopyToClipboardFunction:n.c,default:n.s})},function(){},function(){},function(){},function(){},function(){},function(){}],execute:function(){}}}));
+//# sourceMappingURL=syntaxhighlighter-NMPM6SWI-legacy.d44d07a5.js.map
