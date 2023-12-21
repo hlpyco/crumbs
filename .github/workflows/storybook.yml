@@ -30,8 +30,3 @@ jobs:
 
       - name: Deploy To GitHub Pages
         run: npm run storybook:deploy
-
-        with:
-          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: main
-          FOLDER: static
