@@ -1,5 +1,10 @@
 <template>
-  <button v-bind="$props" :class="veeClass" :style="veeStyle">
+  <button
+    v-bind="$props"
+    :class="veeClass"
+    :style="veeStyle"
+    @click="onClick()"
+  >
     <vee-icon
       v-if="isLeftIcon()"
       size="x-small"
@@ -134,6 +139,12 @@ export default defineComponent({
   },
 
   methods: {
+    onClick() {
+      if (!this.disabled) {
+        this.$emit('click');
+      }
+    },
+
     isRightIcon() {
       return !!this.icon && this.iconPosition === VeeButtonIconPosition.right;
     },
