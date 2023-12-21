@@ -28,5 +28,7 @@ dist-ssr
 .history
 
 # TypeScript
-
 tsconfig*.tsbuildinfo
+
+# Storybook
+static

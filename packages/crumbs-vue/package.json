@@ -1,9 +1,12 @@
 {
   "name": "crumbs-vue",
   "version": "0.1.0",
+  "homepage": "https://hlpyco.github.io/crumbs",
   "scripts": {
-    "storybook:build": "storybook build",
+    "storybook:build": "storybook build -o static",
     "storybook:run": "storybook dev -p 6006",
+    "storybook:predeploy": "touch static/.nojekyll",
+    "storybook:deploy": "gh-pages -d static -t true",
     "test:unit": "vitest --environment jsdom",
     "app:lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
@@ -31,6 +34,7 @@
     "eslint": "^8.5.0",
     "eslint-plugin-storybook": "^0.6.15",
     "eslint-plugin-vue": "^9.0.0",
+    "gh-pages": "^6.1.0",
     "jsdom": "^20.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1",
