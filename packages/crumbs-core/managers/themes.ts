@@ -1,6 +1,7 @@
-import CONSTANTS from '@constants';
-import Theme from '@models/theme';
-import type Themes from '@models/themes';
+import CONSTANTS from '../constants';
+import Theme from '../models/theme';
+import type Themes from '../models/themes';
+import { toCamelCase, toKebabCase } from '../misc/normalizers';
 
 class ThemesManager {
   private themes: Themes;
@@ -24,7 +25,7 @@ class ThemesManager {
 
       for (const color in this.themes[theme]) {
         document.documentElement.style.setProperty(
-          `--crumbs-${theme}-${color}`,
+          this.buildColorVar(theme, color),
           this.themes[theme][color],
         );
       }
@@ -66,8 +67,26 @@ class ThemesManager {
     return this.themes[this.activeThemeName];
   }
 
-  getColor(key: string): string {
-    return this.getCurrentTheme()[key] || key;
+  getColorVar(key: string): string {
+    if (this.getCurrentTheme()[toCamelCase(key)]) {
+      return this.buildColorVar(this.activeThemeName, key);
+    }
+
+    return key;
+  }
+
+  getColorRef(key: string): string {
+    const colorVar = this.getColorVar(key);
+
+    if (colorVar != key) {
+      return `var(${colorVar})`;
+    }
+
+    return key;
+  }
+
+  private buildColorVar(theme: string, colorName: string): string {
+    return `--crumbs-${theme}-${toKebabCase(colorName)}`;
   }
 }
 

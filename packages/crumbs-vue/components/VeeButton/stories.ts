@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue';
 
-import VeeButton from '@components/VeeButton/VeeButton.vue';
+import VeeButton from './VeeButton.vue';
+import { VeeButtonSize, VeeButtonVariant } from './vee-button';
 
 const meta: Meta<typeof VeeButton> = { component: VeeButton };
 type Story = StoryObj<typeof VeeButton>;
@@ -14,7 +15,21 @@ export const Primary: Story = {
   }),
 
   args: {
-    primary: true,
-    label: 'Button',
+    color: 'primary',
+    text: 'Button',
+    size: 'default',
+    variant: 'default',
   },
+
+  argTypes: {
+    variant: {
+      options: Object.values(VeeButtonVariant),
+      control: { type: 'select' },
+    },
+
+    size: {
+      options: Object.values(VeeButtonSize),
+      control: { type: 'select' },
+    },
+  }
 };

@@ -1,4 +1,3 @@
-import type Theme from '@models/theme';
-import createCrumbs from '@managers/crumbs-manager';
+import createCrumbs from './managers/crumbs';
 
-export default createCrumbs
+export default createCrumbs;

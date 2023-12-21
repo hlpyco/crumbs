@@ -1,5 +1,5 @@
-import misc from '@constants/misc';
-import themes from '@constants/themes';
+import misc from './misc';
+import themes from './themes';
 
 export default {
   misc: misc,

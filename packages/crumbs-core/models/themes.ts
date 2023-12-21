@@ -1,4 +1,4 @@
-import type Theme from '@models/theme';
+import type Theme from '../models/theme';
 
 export default interface Themes {
   readonly light?: Theme;

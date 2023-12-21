@@ -1,11 +1,10 @@
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.config.json"
-    },
-    {
-      "path": "./tsconfig.app.json"
-    }
-  ]
+  "include": ["**/*"],
+  "exclude": ["tests/*"],
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": ".",
+    "types": ["node"],
+    "outDir": "./dist"
+  }
 }

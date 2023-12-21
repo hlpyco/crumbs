@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test:unit": "vitest",
-    "compile:css": "npx tailwindcss -i ./styles/tailwind.css -o ./styles/crumbs.css"
+    "compile:css": "npx tailwindcss -i ./styles/tailwind.css -o ./styles/crumbs.css",
+    "watch:css": "npx tailwindcss -i ./styles/tailwind.css -o ./styles/crumbs.css --watch"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
+    "@tailwindcss/typography": "^0.5.10",
     "autoprefixer": "^10.4.16",
     "factory.ts": "^1.4.1",
     "jsdom": "^22.1.0",

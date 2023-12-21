@@ -1,20 +1,30 @@
-import Crumbs from '@models/crumbs';
-import type Themes from '@models/themes';
-import { classBuilder } from '@/builders/class';
-import { styleBuilder } from '@/builders/style';
-import { ThemesManager } from '@managers/themes';
+import Crumbs from '../models/crumbs';
 
-interface CrumbsOptions {
+import { classBuilder } from '../builders/class';
+import { styleBuilder } from '../builders/style';
+import { ThemesManager } from '../managers/themes';
+import { IconsManager } from './icons';
+
+import type Themes from '../models/themes';
+import type Provider from 'models/icons/provider';
+
+import '../styles/crumbs.css';
+
+export interface CrumbsOptions {
   readonly themes?: Themes;
+  readonly icons?: Provider[],
   readonly styles?: string[],
   readonly classes?: string[],
 }
 
 export default function init(options: CrumbsOptions = {}) {
   const themes = new ThemesManager(options.themes);
-  themes.configure();
+  const icons = new IconsManager(options.icons);
 
-  const style = styleBuilder(...options.styles ?? [])
-  const cls = classBuilder(...options.classes ?? [])
-  return new Crumbs(style, cls);
+  themes.configure();
+  icons.configure();
+
+  const style = styleBuilder(options.styles ?? [])
+  const cls = classBuilder(options.classes ?? [])
+  return new Crumbs(style, cls, themes, icons);
 };
