@@ -20,7 +20,9 @@ jobs:
           node-version: 18
 
       - name: Install Dependencies
-        run: npm install
+        run: |
+          cd packages/crumbs-vue
+          npm install
 
       - name: Build Storybook
         run: npm run storybook:build
