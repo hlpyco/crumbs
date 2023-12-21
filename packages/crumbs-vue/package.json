@@ -16,11 +16,10 @@
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.0",
+    "@storybook/addon-a11y": "^7.6.6",
     "@storybook/addon-essentials": "^7.5.2",
-    "@storybook/addon-interactions": "^7.5.2",
     "@storybook/addon-links": "^7.5.2",
     "@storybook/blocks": "^7.5.2",
-    "@storybook/testing-library": "^0.2.2",
     "@storybook/vue": "^7.5.2",
     "@storybook/vue-vite": "^7.5.2",
     "@types/jsdom": "^16.2.14",
