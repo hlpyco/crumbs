@@ -19,9 +19,13 @@ jobs:
 
       - name: Set Up Node.js
         uses: actions/setup-node@v4
-
         with:
           node-version: 18
+
+      - name: Set up Git user
+        run: |
+          git config --global user.name 'Your Name'
+          git config --global user.email 'you@example.com'
 
       - name: Install Dependencies
         run: npm install
