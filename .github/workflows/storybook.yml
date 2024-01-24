@@ -22,11 +22,6 @@ jobs:
         with:
           node-version: 18
 
-      - name: Set up Git user
-        run: |
-          git config --global user.name 'hlpyco'
-          git config --global user.email 'open@hlpy.co'
-
       - name: Install Dependencies
         run: npm install
 
@@ -37,4 +32,7 @@ jobs:
         run: npm run storybook:predeploy
 
       - name: Deploy To GitHub Pages
-        run: npm run storybook:deploy
+        id: deployment-gh-pages
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: static
