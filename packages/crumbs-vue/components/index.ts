@@ -1,6 +1,5 @@
 import VeeButton from './VeeButton';
 import VeeIcon from './VeeIcon';
-import VeeRow from './VeeRow';
-import VeeCol from './VeeCol';
+import { VeeRow, VeeCol, VeeContainer, VeeSpacer } from './VeeGrid';
 
-export { VeeButton, VeeIcon, VeeRow, VeeCol };
+export { VeeButton, VeeIcon, VeeRow, VeeCol, VeeContainer, VeeSpacer };

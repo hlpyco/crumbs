@@ -3,6 +3,7 @@ import type { StorybookConfig } from '@storybook/vue-vite';
 const config: StorybookConfig = {
   stories: [
     '../components/**/stories.@(js|jsx|mjs|ts|tsx)',
+    '../components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
   addons: [
     '@storybook/addon-links',
@@ -15,7 +16,7 @@ const config: StorybookConfig = {
     options: {},
   },
   docs: {
-    autodocs: 'tag',
+    autodocs: true,
   },
 };
 export default config;
