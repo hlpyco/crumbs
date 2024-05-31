@@ -2,7 +2,7 @@
 const FONT_FAMILY = 'Nunito';
 
 module.exports = {
-  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  content: ['./src/**/*.{vue,js,ts,jsx,tsx}'],
 
   theme: {
     screens: {
@@ -11,7 +11,7 @@ module.exports = {
       md: '1280px',
       lg: '1920px',
       xl: '2560px',
-      //xxl: '>2560px',
+      xxl: '>2560px',
     },
 
     typography: {
@@ -128,10 +128,9 @@ module.exports = {
   safelist: [
     "w-full",
     { pattern: /crumbs/ },
-    { pattern: /row/ },
-    { pattern: /col/ },
     { pattern: /gap/ },
     { pattern: /flex/ },
-    { pattern: /grid/ },
+    { pattern: /basis/ },
+    { pattern: /order/ },
   ],
 };

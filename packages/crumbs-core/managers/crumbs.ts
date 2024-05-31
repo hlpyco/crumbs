@@ -6,13 +6,13 @@ import { ThemesManager } from '../managers/themes';
 import { IconsManager } from './icons';
 
 import type Themes from '../models/themes';
-import type Provider from 'models/icons/provider';
+import IconProvider from 'models/icons/provider';
 
 import '../styles/crumbs.css';
 
 export interface CrumbsOptions {
   readonly themes?: Themes;
-  readonly icons?: Provider[],
+  readonly icons?: Record<string, IconProvider>,
   readonly styles?: string[],
   readonly classes?: string[],
 }
