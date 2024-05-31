@@ -10,6 +10,20 @@ import composables from '../../../composables';
 import { classBuilder } from 'crumbs-core/builders/class';
 import { VeeRowAlign, VeeRowAlignContent, VeeRowJustify } from './vee-row';
 
+function validateAlign(value: string): boolean {
+  return Object.values(VeeRowAlign).includes(value as VeeRowAlign);
+}
+
+function validateAlignContent(value: string): boolean {
+  return Object.values(VeeRowAlignContent).includes(
+    value as VeeRowAlignContent,
+  );
+}
+
+function validateJustify(value: string): boolean {
+  return Object.values(VeeRowJustify).includes(value as VeeRowJustify);
+}
+
 export default defineComponent({
   name: 'VeeRow',
 
@@ -27,155 +41,109 @@ export default defineComponent({
     align: {
       type: String as PropType<VeeRowAlign>,
       default: null,
-      validator: (value: string): boolean => {
-        return Object.values(VeeRowAlign).includes(value as VeeRowAlign);
-      },
+      validator: validateAlign,
     },
 
     alignLg: {
       type: String as PropType<VeeRowAlign>,
       default: null,
-      validator: (value: string): boolean => {
-        return Object.values(VeeRowAlign).includes(value as VeeRowAlign);
-      },
+      validator: validateAlign,
     },
 
     alignMd: {
       type: String as PropType<VeeRowAlign>,
       default: null,
-      validator: (value: string): boolean => {
-        return Object.values(VeeRowAlign).includes(value as VeeRowAlign);
-      },
+      validator: validateAlign,
     },
 
     alignSm: {
       type: String as PropType<VeeRowAlign>,
       default: null,
-      validator: (value: string): boolean => {
-        return Object.values(VeeRowAlign).includes(value as VeeRowAlign);
-      },
+      validator: validateAlign,
     },
 
     alignXl: {
       type: String as PropType<VeeRowAlign>,
       default: null,
-      validator: (value: string): boolean => {
-        return Object.values(VeeRowAlign).includes(value as VeeRowAlign);
-      },
+      validator: validateAlign,
     },
 
     alignXxl: {
       type: String as PropType<VeeRowAlign>,
       default: null,
-      validator: (value: string): boolean => {
-        return Object.values(VeeRowAlign).includes(value as VeeRowAlign);
-      },
+      validator: validateAlign,
     },
 
     alignContent: {
       type: String as PropType<VeeRowAlignContent>,
       default: null,
-      validator: (value: string): boolean => {
-        return Object.values(VeeRowAlignContent).includes(
-          value as VeeRowAlignContent,
-        );
-      },
+      validator: validateAlignContent,
     },
 
     alignContentLg: {
       type: String as PropType<VeeRowAlignContent>,
       default: null,
-      validator: (value: string): boolean => {
-        return Object.values(VeeRowAlignContent).includes(
-          value as VeeRowAlignContent,
-        );
-      },
+      validator: validateAlignContent,
     },
 
     alignContentMd: {
       type: String as PropType<VeeRowAlignContent>,
       default: null,
-      validator: (value: string): boolean => {
-        return Object.values(VeeRowAlignContent).includes(
-          value as VeeRowAlignContent,
-        );
-      },
+      validator: validateAlignContent,
     },
 
     alignContentSm: {
       type: String as PropType<VeeRowAlignContent>,
       default: null,
-      validator: (value: string): boolean => {
-        return Object.values(VeeRowAlignContent).includes(
-          value as VeeRowAlignContent,
-        );
-      },
+      validator: validateAlignContent,
     },
 
     alignContentXl: {
       type: String as PropType<VeeRowAlignContent>,
       default: null,
-      validator: (value: string): boolean => {
-        return Object.values(VeeRowAlignContent).includes(
-          value as VeeRowAlignContent,
-        );
-      },
+      validator: validateAlignContent,
     },
 
     alignContentXxl: {
       type: String as PropType<VeeRowAlign>,
       default: null,
-      validator: (value: string): boolean => {
-        return Object.values(VeeRowAlign).includes(value as VeeRowAlign);
-      },
+      validator: validateAlignContent,
     },
 
     justify: {
       type: String as PropType<VeeRowJustify>,
       default: null,
-      validator: (value: string): boolean => {
-        return Object.values(VeeRowJustify).includes(value as VeeRowJustify);
-      },
+      validator: validateJustify,
     },
 
     justifyLg: {
       type: String as PropType<VeeRowJustify>,
       default: null,
-      validator: (value: string): boolean => {
-        return Object.values(VeeRowJustify).includes(value as VeeRowJustify);
-      },
+      validator: validateJustify,
     },
 
     justifyMd: {
       type: String as PropType<VeeRowJustify>,
       default: null,
-      validator: (value: string): boolean => {
-        return Object.values(VeeRowJustify).includes(value as VeeRowJustify);
-      },
+      validator: validateJustify,
     },
 
     justifySm: {
       type: String as PropType<VeeRowJustify>,
       default: null,
-      validator: (value: string): boolean => {
-        return Object.values(VeeRowJustify).includes(value as VeeRowJustify);
-      },
+      validator: validateJustify,
     },
 
     justifyXl: {
       type: String as PropType<VeeRowJustify>,
       default: null,
-      validator: (value: string): boolean => {
-        return Object.values(VeeRowJustify).includes(value as VeeRowJustify);
-      },
+      validator: validateJustify,
     },
 
     justifyXxl: {
       type: String as PropType<VeeRowJustify>,
       default: null,
-      validator: (value: string): boolean => {
-        return Object.values(VeeRowJustify).includes(value as VeeRowJustify);
-      },
+      validator: validateJustify,
     },
 
     ...composables.makeStyleProps(),

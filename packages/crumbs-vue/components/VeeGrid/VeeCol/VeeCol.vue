@@ -12,6 +12,11 @@ import { VeeColAlignSelf } from './vee-col';
 
 const COLS_AUTO = 'auto';
 const BASIS_FULL = 'full';
+const TOTAL_BASIS = 12;
+
+function calculateBasis(value: any): string {
+  return value === COLS_AUTO ? BASIS_FULL : `${value}/${TOTAL_BASIS}`;
+}
 
 function validateCols(value: any): boolean {
   try {
@@ -164,12 +169,12 @@ export default defineComponent({
     },
 
     veeClass(): string {
-      const cssCols = this.cols === COLS_AUTO ? BASIS_FULL : `${this.cols}/12`;
-      const cssSm = this.sm === COLS_AUTO ? BASIS_FULL : `${this.sm}/12`;
-      const cssMd = this.md === COLS_AUTO ? BASIS_FULL : `${this.md}/12`;
-      const cssLg = this.lg === COLS_AUTO ? BASIS_FULL : `${this.lg}/12`;
-      const cssXl = this.xl === COLS_AUTO ? BASIS_FULL : `${this.xl}/12`;
-      const cssXxl = this.xxl === COLS_AUTO ? BASIS_FULL : `${this.xxl}/12`;
+      const cssCols = calculateBasis(this.cols);
+      const cssSm = calculateBasis(this.sm);
+      const cssMd = calculateBasis(this.md);
+      const cssLg = calculateBasis(this.lg)
+      const cssXl = calculateBasis(this.xl);
+      const cssXxl = calculateBasis(this.xxl);
 
       return classBuilder({
         'vee-col-auto': !this.cols,
