@@ -39,7 +39,7 @@
     </svg>
 
     <div
-      v-if="$slots.default && !this.indeterminate"
+      v-if="!this.indeterminate"
       class="vee-progress-circular-slot"
     >
       <slot :value="value"></slot>

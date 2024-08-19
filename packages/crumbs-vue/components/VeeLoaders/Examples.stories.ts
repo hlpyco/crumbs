@@ -41,11 +41,15 @@ export const ProgressCircularSlot: Story = {
     components: { VeeProgressCircular },
     template: `
     <div>
-      <vee-progress-circular rotate="0" color="primary" indeterminate />
-      <vee-progress-circular rotate="45" color="error" indeterminate />
-      <vee-progress-circular rotate="90" color="black" indeterminate />
-      <vee-progress-circular rotate="135" color="grey" indeterminate />
-      <vee-progress-circular rotate="180" color="#FF00FF" indeterminate />
+      <vee-progress-circular size="100" width="15" color="black" value="65">
+        <template v-slot="{ value }">
+          {{ value }}
+        </template>
+      </vee-progress-circular>
+
+      <vee-progress-circular size="70" width="8" color="orange" indeterminate>
+        This div should not be visible
+      </vee-progress-circular>
     </div>
     `,
   }),
@@ -56,15 +60,11 @@ export const ProgressCircularSize: Story = {
     components: { VeeProgressCircular },
     template: `
     <div>
-      <vee-progress-circular size="100" width="15" color="black" value="65">
-        <template v-slot="{ value }">
-          {{ value }}
-        </template>
-      </vee-progress-circular>
-
-      <vee-progress-circular size="70" width="8" indeterminate>
-        This div should not be visible
-      </vee-progress-circular>
+      <vee-progress-circular size="50" color="primary" indeterminate />
+      <vee-progress-circular width="3" color="error" indeterminate />
+      <vee-progress-circular size="70" width="7" color="black" indeterminate />
+      <vee-progress-circular width="3" color="grey" indeterminate />
+      <vee-progress-circular size="50" color="#FF00FF" indeterminate />
     </div>
     `,
   }),
