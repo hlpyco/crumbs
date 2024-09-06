@@ -21,7 +21,7 @@ export const Primary: Story = {
     },
 
     size: {
-      control: { type: 'number' },
+      control: { type: 'text' },
       description: 'Sets the diameter of the circle in pixels.',
     },
 
@@ -31,12 +31,12 @@ export const Primary: Story = {
     },
 
     value: {
-      control: { type: 'number' },
+      control: { type: 'string' },
       description: `The percentage value for current progress ${documentRange(0, 100)}.`,
     },
 
     width: {
-      control: { type: 'number' },
+      control: { type: 'string' },
       description: 'Sets the stroke width of the circle in pixels.',
     },
   },
