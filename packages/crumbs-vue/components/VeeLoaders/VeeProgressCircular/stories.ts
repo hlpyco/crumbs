@@ -31,12 +31,12 @@ export const Primary: Story = {
     },
 
     value: {
-      control: { type: 'string' },
+      control: { type: 'text' },
       description: `The percentage value for current progress ${documentRange(0, 100)}.`,
     },
 
     width: {
-      control: { type: 'string' },
+      control: { type: 'text' },
       description: 'Sets the stroke width of the circle in pixels.',
     },
   },
