@@ -39,7 +39,7 @@
     </svg>
 
     <div
-      v-if="!this.indeterminate"
+      v-if="!indeterminate"
       class="vee-progress-circular-slot"
     >
       <slot :value="value"></slot>
@@ -122,7 +122,7 @@ export default defineComponent({
     },
 
     veeStrokeWidth(): number {
-      return (Number(this.width) / +this.size) * this.veeViewBoxSize * 2;
+      return (Number(this.width) / + Number(this.size)) * this.veeViewBoxSize * 2;
     },
 
     veeStrokeDashOffset(): number {
@@ -138,7 +138,7 @@ export default defineComponent({
     },
 
     veeViewBoxSize(): number {
-      return this.radius / (1 - Number(this.width) / +this.size);
+      return this.radius / (1 - Number(this.width) / + Number(this.size));
     },
 
     veeStyle(): Record<string, any> {
