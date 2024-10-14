@@ -1,3 +1,4 @@
 import { VeeProgressCircular } from './VeeProgressCircular';
+import { VeeProgressLinear } from './VeeProgressLinear';
 
-export { VeeProgressCircular };
+export { VeeProgressCircular, VeeProgressLinear };
